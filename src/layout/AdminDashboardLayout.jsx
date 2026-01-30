@@ -1,7 +1,7 @@
 // import { useUser } from "@clerk/clerk-react";
 // import { useState } from "react";
 // import Navbar from "../components/Navbar";
-// import SideMenu from "../components/SideMenu";
+// import SideMenu from "../components/AdminSlideMenu";
 
 // const DashboardLayout = ({ children ,activeMenu}) => {
 //     const { user } = useUser();
@@ -41,10 +41,12 @@
 // }
 // export default DashboardLayout;
 
+
+
 import { useUser } from "@clerk/clerk-react";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../components/AdminSlideMenu";
 
 const DashboardLayout = ({ children, activeMenu }) => {
   const { user } = useUser();
@@ -52,7 +54,8 @@ const DashboardLayout = ({ children, activeMenu }) => {
 
   return (
     <div className="bg-slate-800 min-h-screen flex flex-col">
-      {/* Navbar */}
+
+      {/* NAVBAR */}
       <Navbar
         openSideMenu={openSideMenu}
         setOpenSideMenu={setOpenSideMenu}
@@ -61,9 +64,10 @@ const DashboardLayout = ({ children, activeMenu }) => {
 
       {user && (
         <div className="flex flex-1 relative bg-slate-800">
-          {/* Desktop Side Menu */}
+
+          {/* ===== DESKTOP SIDE MENU ===== */}
           {openSideMenu && (
-            <div className="hidden lg:block w-64 shrink-0">
+            <div className="hidden lg:block w-64">
               <SideMenu
                 open={openSideMenu}
                 setOpenSideMenu={setOpenSideMenu}
@@ -72,27 +76,30 @@ const DashboardLayout = ({ children, activeMenu }) => {
             </div>
           )}
 
-          {/* Mobile Side Menu */}
+          {/* ===== MOBILE OVERLAY ===== */}
           {openSideMenu && (
-            <>
-              <div
-                className="fixed inset-0 bg-black/30 backdrop-blur-sm lg:hidden z-[19]"
-                onClick={() => setOpenSideMenu(false)}
-              />
-              <div className="fixed top-[180px] left-0 w-64 h-[calc(100vh-180px)] bg-white border-r border-gray-200/50 lg:hidden z-20 overflow-y-auto animate-in slide-in-from-left duration-300">
-                <SideMenu
-                  open={openSideMenu}
-                  setOpenSideMenu={setOpenSideMenu}
-                  activeMenu={activeMenu}
-                />
-              </div>
-            </>
+            <div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm lg:hidden z-20"
+              onClick={() => setOpenSideMenu(false)}
+            />
           )}
 
-          {/* Main Content */}
-          <div className="grow w-full overflow-x-hidden">
+          {/* ===== MOBILE SIDE MENU (ONLY WHEN OPEN) ===== */}
+          {openSideMenu && (
+            <div className="fixed top-[64px] left-0 h-[calc(100vh-64px)] w-64 bg-white border-r border-gray-200 lg:hidden z-30 animate-in slide-in-from-left duration-300">
+              <SideMenu
+                open={openSideMenu}
+                setOpenSideMenu={setOpenSideMenu}
+                activeMenu={activeMenu}
+              />
+            </div>
+          )}
+
+          {/* ===== MAIN CONTENT ===== */}
+          <main className="flex-1 w-full overflow-x-hidden">
             {children}
-          </div>
+          </main>
+
         </div>
       )}
     </div>
@@ -100,3 +107,4 @@ const DashboardLayout = ({ children, activeMenu }) => {
 };
 
 export default DashboardLayout;
+

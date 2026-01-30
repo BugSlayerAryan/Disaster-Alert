@@ -4,7 +4,7 @@ import MyFile from "./pages/MyFile.jsx";
 import PublicFileView from "./pages/PublicFileView.jsx";
 import Subscription from "./pages/Subscription.jsx";
 import Transactions from "./pages/Transactions.jsx";
-import Upload from "./pages/Upload.jsx";
+import UploadDisaster from "./pages/UploadDisaster.jsx";
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
 import Dashboard from "./pages/Dashboard.jsx";
 import Admin from "./pages/Admin.jsx";
@@ -41,7 +41,7 @@ const App = () => {
           }
         />
 
-        <Route
+        {/* <Route
           path="/my-files"
           element={
             <>
@@ -53,13 +53,13 @@ const App = () => {
               </SignedOut>
             </>
           }
-        />
+        /> */}
         <Route
-          path="/upload"
+          path="/upload-disaster-data"
           element={
             <>
               <SignedIn>
-                <Upload />
+                <UploadDisaster />
               </SignedIn>
               <SignedOut>
                 <RedirectToSignIn />
@@ -67,7 +67,7 @@ const App = () => {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/subscription"
           element={
             <>
@@ -92,7 +92,7 @@ const App = () => {
               </SignedOut>
             </>
           }
-        />
+        /> */}
         <Route path="/*" element={<RedirectToSignIn />} />
       </Routes>
     </BrowserRouter>

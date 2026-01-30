@@ -21,14 +21,16 @@ export default function VideosSection() {
   return (
     <section className="bg-gradient-to-l from-gray-900 via-slate-900 to-slate-800 py-14">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold text-white mb-10">Videos</h2>
+        <h2 className="text-3xl font-semibold text-white mb-10 text-center md:text-left">
+          Videos
+        </h2>
 
-        {/* Flex row with larger boxes */}
-        <div className="flex justify-between gap-6">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {videos.map((video, i) => (
             <div
               key={i}
-              className="flex-1 group rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="group rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="relative aspect-video w-full">
                 <iframe
@@ -38,16 +40,17 @@ export default function VideosSection() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                ></iframe>
+                />
               </div>
-              <p className="mt-4 text-sm text-white font-medium leading-snug group-hover:text-orange-400 transition-colors px-2">
+
+              <p className="mt-4 px-2 pb-2 text-sm text-white font-medium leading-snug group-hover:text-orange-400 transition-colors">
                 {video.title}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-10">
           <a
             href="https://www.youtube.com/@ndmaindiagoi/playlists"
             target="_blank"
