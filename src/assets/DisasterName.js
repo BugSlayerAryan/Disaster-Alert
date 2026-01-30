@@ -1,8 +1,22 @@
+import IndustrialOrChemicalDisaster from "./Industrial or Chemical Disaster.jpg";
+import NuclearDisaster from "./Nuclear Disaster.jpg";
+import TerrorAttack from "./Terror Attack OR Explosion.jpg";
+import Earthquake from "./Earthquake.webp";
+import Cyclone from "./Cyclone 1.png";
+import Flood from "./Flood.webp";
+import VolcanicEruption from "./Volcanic Eruption.jpg";
+import Wildfire from "./Wildfire.avif";
+import Drought from "./Drought.webp";
+import HeatWave from "./Heat Wave.webp";
+import ColdWave from "./Cold Wave or Blizzard.webp";
+import Avalanche from "./Avalanche.webp";
+import Pandemic from "./Pandemic or Epidemic.jpg";
+import Landslide from "./Landslide.jpg";
+import Tsunami from "./Tsunami.webp";
 export const disasters = [
   {
     title: "Earthquake",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/6/6e/2010_Haiti_earthquake_damage.jpg",
+    image: Earthquake,
     dos: [
       "Drop, Cover, and Hold On",
       "Anchor heavy furniture",
@@ -12,8 +26,7 @@ export const disasters = [
   },
   {
     title: "Landslide",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/7/7a/Landslide_in_Uttarakhand_India.jpg",
+    image: Landslide,
     dos: [
       "Move away from slope-prone areas",
       "Follow weather department alerts",
@@ -22,8 +35,7 @@ export const disasters = [
   },
   {
     title: "Tsunami",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/3/3c/2011_Tōhoku_tsunami.jpg",
+    image: Tsunami,
     dos: [
       "Move to higher ground immediately",
       "Know evacuation routes",
@@ -32,8 +44,7 @@ export const disasters = [
   },
   {
     title: "Cyclone / Hurricane",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/1/1a/Cyclone_Fani_2019.jpg",
+    image: Cyclone,
     dos: [
       "Secure windows and doors",
       "Keep emergency supplies ready",
@@ -42,8 +53,7 @@ export const disasters = [
   },
   {
     title: "Flood",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/5/56/2018_Kerala_floods.jpg",
+    image: Flood,
     dos: [
       "Move to higher ground",
       "Turn off electricity",
@@ -52,8 +62,7 @@ export const disasters = [
   },
   {
     title: "Volcanic Eruption",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/2/28/Mount_Merapi_eruption_2010.jpg",
+    image: VolcanicEruption,
     dos: [
       "Wear masks and goggles",
       "Follow evacuation orders",
@@ -62,8 +71,7 @@ export const disasters = [
   },
   {
     title: "Wildfire",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/1/1c/Australia_bushfires_2020.jpg",
+    image: Wildfire,
     dos: [
       "Evacuate early",
       "Keep emergency kits ready",
@@ -72,8 +80,7 @@ export const disasters = [
   },
   {
     title: "Drought",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/e/e1/Drought_Africa.jpg",
+    image: Drought,
     dos: [
       "Conserve water",
       "Store food supplies",
@@ -82,8 +89,7 @@ export const disasters = [
   },
   {
     title: "Heat Wave",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/4/44/Heat_wave_city.jpg",
+    image: HeatWave,
     dos: [
       "Stay hydrated",
       "Avoid outdoor activity",
@@ -92,8 +98,7 @@ export const disasters = [
   },
   {
     title: "Cold Wave / Blizzard",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/0/09/Blizzard_New_York.jpg",
+    image: ColdWave,
     dos: [
       "Stay indoors",
       "Wear layered clothing",
@@ -102,8 +107,7 @@ export const disasters = [
   },
   {
     title: "Avalanche",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/b/bb/Avalanche_mountain.jpg",
+    image: Avalanche,
     dos: [
       "Follow avalanche warnings",
       "Carry safety equipment",
@@ -112,8 +116,7 @@ export const disasters = [
   },
   {
     title: "Pandemic / Epidemic",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/8/82/COVID-19_hospital_ward.jpg",
+    image: Pandemic,
     dos: [
       "Maintain hygiene",
       "Follow health advisories",
@@ -122,8 +125,7 @@ export const disasters = [
   },
   {
     title: "Industrial / Chemical Disaster",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/9/9b/Bhopal_gas_tragedy_memorial.jpg",
+    image: IndustrialOrChemicalDisaster,
     dos: [
       "Cover nose and mouth",
       "Evacuate immediately",
@@ -132,8 +134,7 @@ export const disasters = [
   },
   {
     title: "Nuclear Disaster",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/7/74/Fukushima_reactor_damage.jpg",
+    image: NuclearDisaster,
     dos: [
       "Follow radiation safety instructions",
       "Stay indoors",
@@ -142,8 +143,7 @@ export const disasters = [
   },
   {
     title: "Terror Attack / Explosion",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/3/3f/Explosion_damage_city.jpg",
+    image: TerrorAttack,
     dos: [
       "Move to a safe location",
       "Follow emergency services",

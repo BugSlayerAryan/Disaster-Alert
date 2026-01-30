@@ -1,9 +1,10 @@
 import HeaderSection from "../components/Landing/HeaderSection";
 import HeroSection from "../components/Landing/HeroSection";
+import NDMAMessageSection from "../components/Landing/NDMAMessageSection.jsx";
 import DisasterSection from "../components/Landing/DisasterSection.jsx";
 import ActivityAndResources from "../components/Landing/ActivityAndResources.jsx";
 import VideoSection from "../components/Landing/VideoSection.jsx";
-import ImportantWebsitesSection from "../components/Landing/ImportantWebsitesSection.jsx";
+import Web from "../components/Landing/Web.jsx";
 import CTASection from "../components/Landing/CTASection";
 import FotterSection from "../components/Landing/FotterSection";
 import { useUser, useClerk } from "@clerk/clerk-react";
@@ -26,14 +27,16 @@ const Landing = () => {
             <HeaderSection />
             {/* Hero Section */}
             <HeroSection openSignIn={openSignIn} openSignUp={openSignUp} />
+            {/* NDMAMessage Section */}
+            <NDMAMessageSection />
             {/* Features Section */}
             <DisasterSection />
             {/* ActivityAndResources section */}
             <ActivityAndResources />
-            {/* VideoSection */}
+            {/* Video Section */}
             <VideoSection />
-            {/* ImportantWebsitesSection section */}
-            <ImportantWebsitesSection />
+            {/* Websites  section*/}
+            <Web />
             {/* CTA Section */}
             <CTASection openSignUp={openSignUp} />
             {/* Fotter Section */}

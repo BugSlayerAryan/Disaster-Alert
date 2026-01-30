@@ -1,8 +1,5 @@
-import { Menu, Share2, Wallet, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Menu, Share2, X ,AlertTriangle} from "lucide-react";
 import { SignedIn, UserButton } from "@clerk/clerk-react";
-import SideMenu from "./SideMenu";
-
 const Navbar = ({ openSideMenu, setOpenSideMenu , activeMenu}) => {
     return(
         <>
@@ -24,8 +21,8 @@ const Navbar = ({ openSideMenu, setOpenSideMenu , activeMenu}) => {
                         )}
                     </button>
                     <div className="flex items-center gap-2">
-                        <Share2 className="text-blue-400" size={24} />
-                        <span className="text-base font-semibold text-white truncate">DISASTER MANAGEMENT SYSTEM</span>
+                        <AlertTriangle className="text-yellow-400" size={24} />
+                        <span className="text-base font-semibold text-white truncate">DISASTER ALERT</span>
                     </div>
                 </div>
 

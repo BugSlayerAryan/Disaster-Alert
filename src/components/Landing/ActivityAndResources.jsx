@@ -1,4 +1,11 @@
 import { ShieldCheck, Users, BookOpen, Cpu, Lightbulb } from "lucide-react";
+import NationalPlan from "../../assets/National Plan.png";
+import NationalPolicy from "../../assets/National Policy.png";
+import NationalGuideline from "../../assets/National Guideline.png";
+import ReportsStudies from "../../assets/Reports Studies.png";
+import SignLanguageVideos from "../../assets/Sign Language Videos.png";
+import AnnualReport from "../../assets/Annual Report.png";
+import HazardAtlas from "../../assets/Hazard Atlas.png";
 
 const activities = [
   {
@@ -28,14 +35,15 @@ const activities = [
   },
 ];
 
+// Added URLs and hover effect
 const resources = [
-  { title: "National Plan", img: "/resources/plan.png" },
-  { title: "National Policy", img: "/resources/policy.png" },
-  { title: "National Guideline", img: "/resources/guideline.png" },
-  { title: "Reports Studies", img: "/resources/reports.png" },
-  { title: "Sign Language Videos", img: "/resources/sign.png" },
-  { title: "Annual Report", img: "/resources/annual.png" },
-  { title: "Hazard Atlas", img: "/resources/atlas.png" },
+  { title: "National Plan", img: NationalPlan, link: "https://ndma.gov.in/nationalstate-dm-plan" },
+  { title: "National Policy", img: NationalPolicy, link: "https://ndma.gov.in/national-dm-policy" },
+  { title: "National Guideline", img: NationalGuideline, link: "https://ndma.gov.in/ndma-guidelines" },
+  { title: "Reports Studies", img: ReportsStudies, link: "https://ndma.gov.in/reports-studies" },
+  { title: "Sign Language", img: SignLanguageVideos, link: "https://www.youtube.com/watch?v=0G8Pa60pJls&list=PLOuQBh7LWB0iEYnAkPzjI8DAHxDxgyIiv" },
+  { title: "Annual Report", img: AnnualReport, link: "https://ndma.gov.in/annual-reports" },
+  { title: "Hazard Atlas", img: HazardAtlas, link: "https://ndma.gov.in/flood-hazard-atlases" },
 ];
 
 export default function ActivityAndResources() {
@@ -80,10 +88,13 @@ export default function ActivityAndResources() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
             {resources.map((res, i) => (
-              <div
+              <a
                 key={i}
-                className="bg-white rounded-xl p-4 text-center
-                       border border-gray-200 shadow-sm"
+                href={res.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm
+                           transform transition duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-lg"
               >
                 <div className="h-36 flex items-center justify-center mb-4">
                   <img
@@ -96,7 +107,7 @@ export default function ActivityAndResources() {
                 <p className="text-sm font-medium text-[#165a8a]">
                   {res.title}
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </div>
