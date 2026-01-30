@@ -27,6 +27,7 @@
 // );
 // }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
 
@@ -34,9 +35,10 @@ export default function IncidentOverview() {
   const [incidents, setIncidents] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/disasters/active")
+    fetch(`${API_BASE_URL}/disasters/active`)
       .then((res) => res.json())
-      .then(setIncidents);
+      .then(setIncidents)
+      .catch((err) => console.error("Failed to fetch incidents:", err));
   }, []);
 
   // 🎯 Severity styles (HIGH slightly stronger)

@@ -360,7 +360,7 @@
 //   );
 // }
 
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import React, { useState, useEffect } from "react";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import { AlertCircle, MapPin, Phone, AlertTriangle, Send } from "lucide-react";
@@ -412,7 +412,7 @@ export default function SendHelpRequestPanel() {
 
   // Fetch active incidents from API
   useEffect(() => {
-    fetch("http://localhost:8080/api/disasters/active")
+    fetch(`${API_BASE_URL}/disasters/active`)
       .then((res) => res.json())
       .then(setAllIncidents)
       .catch((err) => console.error("Failed to fetch incidents:", err));

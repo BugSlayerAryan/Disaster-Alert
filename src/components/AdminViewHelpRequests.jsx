@@ -295,7 +295,7 @@
 // }
 
 
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import React, { useState, useEffect } from "react";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import {
@@ -306,7 +306,6 @@ import {
   CheckCircle,
   XCircle,
 } from "lucide-react";
-
 export default function AdminViewHelpRequests() {
   const { user, isLoaded } = useUser();
   const { getToken } = useAuth();
@@ -327,7 +326,7 @@ export default function AdminViewHelpRequests() {
 
       const token = await getToken({ template: "backend" });
 
-      const res = await fetch("http://localhost:8080/api/help/all", {
+      const res = await fetch(`${API_BASE_URL}/help/all`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -414,8 +413,7 @@ export default function AdminViewHelpRequests() {
     try {
       const token = await getToken({ template: "backend" });
 
-      await fetch(
-        `http://localhost:8080/api/help/${helpId}/status?status=${status}`,
+      await fetch(`${API_BASE_URL}/help/${helpId}/status?status=${status}`,
         {
           method: "PUT",
           headers: {

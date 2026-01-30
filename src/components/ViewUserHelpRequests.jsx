@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import React, { useState, useEffect } from "react";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import {
@@ -37,12 +38,12 @@ const fetchHelpRequests = async () => {
   try {
     const token = await getToken({ template: "backend" });
 
-    const response = await fetch(`http://localhost:8080/api/help/my`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+const response = await fetch(`${API_BASE_URL}/help/my`, {
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+});
 
     if (!response.ok) {
       throw new Error(`Failed to fetch help requests: ${response.status}`);

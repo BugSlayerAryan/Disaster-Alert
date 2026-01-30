@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import DashboardLayout from "../layout/DashboardLayout";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
@@ -31,14 +32,14 @@ export default function Dashboard() {
         role: "ROLE_USER"
       };
 
-      const res = await fetch("http://localhost:8080/api/users/sync", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(userData)
-      });
+const res = await fetch(`${API_BASE_URL}/users/sync`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify(userData),
+});
 
       const data = await res.json();
       if (!data.phone || !data.location) setShowPopup(true);

@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { useState } from "react";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import axios from "axios";
@@ -16,12 +17,15 @@ export default function ProfilePopup({ onClose }) {
     try {
       const token = await getToken({ template: "backend" });
 
-      await axios.put(
-        "http://localhost:8080/api/users/update-profile",
-        { clerkUserId: user?.id, phone, location },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
+await axios.put(
+  `${API_BASE_URL}/users/update-profile`,
+  { clerkUserId: user?.id, phone, location },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       onClose(); // close popup on success
     } catch (err) {
       console.error("Failed to save profile", err);
