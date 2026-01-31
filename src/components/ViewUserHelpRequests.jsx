@@ -132,7 +132,7 @@ export default function ViewUserHelpRequests() {
       const token = await getToken({ template: "backend" });
 
       await fetch(
-        `${API_BASE_URL}/help/${helpId}/status?status=USER_CONFIRMED`,
+        `${API_BASE_URL}/api/help/${helpId}/status?status=USER_CONFIRMED`,
         { method: "PUT", headers: { Authorization: `Bearer ${token}` } },
       );
 

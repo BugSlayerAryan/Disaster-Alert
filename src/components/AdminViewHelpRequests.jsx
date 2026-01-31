@@ -413,7 +413,7 @@ export default function AdminViewHelpRequests() {
     try {
       const token = await getToken({ template: "backend" });
 
-      await fetch(`${API_BASE_URL}/help/${helpId}/status?status=${status}`, {
+      await fetch(`${API_BASE_URL}/api/help/${helpId}/status?status=${status}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
