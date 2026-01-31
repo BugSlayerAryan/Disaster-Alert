@@ -33,7 +33,7 @@ const UploadDisaster = () => {
     setLoading(true);
     try {
       const token = await getToken({ template: "backend" });
-      const response = await fetch(`${API_BASE_URL}/disasters`, {
+      const response = await fetch(`${API_BASE_URL}/disaster`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
