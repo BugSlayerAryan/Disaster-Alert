@@ -38,7 +38,7 @@ export default function ViewUserHelpRequests() {
     try {
       const token = await getToken({ template: "backend" });
 
-      const response = await fetch(`${API_BASE_URL}/help/my`, {
+      const response = await fetch(`${API_BASE_URL}/api/help/my`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
