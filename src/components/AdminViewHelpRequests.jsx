@@ -325,7 +325,7 @@ export default function AdminViewHelpRequests() {
 
       const token = await getToken({ template: "backend" });
 
-      const res = await fetch(`${API_BASE_URL}/help/all`, {
+      const res = await fetch(`${API_BASE_URL}/api/help/all`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

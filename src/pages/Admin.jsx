@@ -120,7 +120,7 @@ export default function Dashboard() {
         role: "ROLE_USER",
       };
 
-      const res = await fetch(`${API_BASE_URL}/users/sync`, {
+      const res = await fetch(`${API_BASE_URL}/api/users/sync`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

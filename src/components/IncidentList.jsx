@@ -34,7 +34,7 @@ import { MapPin } from "lucide-react";
 export default function IncidentOverview() {
   const [incidents, setIncidents] = useState([]);
 
-fetch(`${API_BASE_URL}/disasters/active`, {
+fetch(`${API_BASE_URL}/api/disasters/active`, {
   method: "GET", // Explicitly state GET
   headers: {
     "Content-Type": "application/json",

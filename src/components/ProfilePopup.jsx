@@ -18,7 +18,7 @@ export default function ProfilePopup({ onClose }) {
       const token = await getToken({ template: "backend" });
 
 await axios.put(
-  `${API_BASE_URL}/users/update-profile`,
+  `${API_BASE_URL}/api/users/update-profile`,
   { clerkUserId: user?.id, phone, location },
   {
     headers: {
