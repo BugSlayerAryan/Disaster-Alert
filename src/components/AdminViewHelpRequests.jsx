@@ -294,7 +294,6 @@
 //   );
 // }
 
-
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import React, { useState, useEffect } from "react";
 import { useUser, useAuth } from "@clerk/clerk-react";
@@ -327,6 +326,7 @@ export default function AdminViewHelpRequests() {
       const token = await getToken({ template: "backend" });
 
       const res = await fetch(`${API_BASE_URL}/help/all`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -413,14 +413,12 @@ export default function AdminViewHelpRequests() {
     try {
       const token = await getToken({ template: "backend" });
 
-      await fetch(`${API_BASE_URL}/help/${helpId}/status?status=${status}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await fetch(`${API_BASE_URL}/help/${helpId}/status?status=${status}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       fetchHelpRequests(); // 🔥 real-time refresh
     } catch (err) {
@@ -492,7 +490,7 @@ export default function AdminViewHelpRequests() {
                   <div className="flex items-center gap-2">
                     <div
                       className={`flex items-center gap-1 px-2 py-0.5 rounded border text-xs ${getStatusColor(
-                        req.status
+                        req.status,
                       )}`}
                     >
                       {getStatusIcon(req.status)}
@@ -514,9 +512,7 @@ export default function AdminViewHelpRequests() {
                     {/* RESOLVE */}
                     {req.status === "USER_CONFIRMED" && (
                       <button
-                        onClick={() =>
-                          updateStatus(req.requestId, "RESOLVED")
-                        }
+                        onClick={() => updateStatus(req.requestId, "RESOLVED")}
                         className="text-xs px-2 py-0.5 rounded bg-green-600 hover:bg-green-700"
                       >
                         Resolve
@@ -529,18 +525,24 @@ export default function AdminViewHelpRequests() {
                 <div className="grid grid-cols-3 gap-2 mt-2 text-xs">
                   <div className="flex gap-1">
                     <MapPin size={12} className="text-blue-400 mt-0.5" />
-                    <span className="truncate">{req.currentLocation || "N/A"}</span>
+                    <span className="truncate">
+                      {req.currentLocation || "N/A"}
+                    </span>
                   </div>
 
                   <div className="flex gap-1">
-                    <AlertTriangle size={12} className="text-orange-400 mt-0.5" />
+                    <AlertTriangle
+                      size={12}
+                      className="text-orange-400 mt-0.5"
+                    />
                     <span className="truncate">{req.issueType || "N/A"}</span>
                   </div>
 
                   <div className="flex gap-1">
                     <AlertCircle size={12} className="text-purple-400 mt-0.5" />
                     <span className="truncate">
-                      {req.disaster?.type || "N/A"} - {req.disaster?.disasterId || "N/A"}
+                      {req.disaster?.type || "N/A"} -{" "}
+                      {req.disaster?.disasterId || "N/A"}
                     </span>
                   </div>
                 </div>

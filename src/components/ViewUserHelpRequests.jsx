@@ -28,43 +28,42 @@ export default function ViewUserHelpRequests() {
     }
   }, [isLoaded, user]);
 
-// Inside your component, right after fetching the help requests:
-const fetchHelpRequests = async () => {
-  if (!user) return;
+  // Inside your component, right after fetching the help requests:
+  const fetchHelpRequests = async () => {
+    if (!user) return;
 
-  setLoading(true);
-  setError("");
+    setLoading(true);
+    setError("");
 
-  try {
-    const token = await getToken({ template: "backend" });
+    try {
+      const token = await getToken({ template: "backend" });
 
-const response = await fetch(`${API_BASE_URL}/help/my`, {
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  },
-});
+      const response = await fetch(`${API_BASE_URL}/help/my`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch help requests: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch help requests: ${response.status}`);
+      }
+
+      let data = await response.json();
+      data = Array.isArray(data) ? data : [data];
+
+      // 🔹 Sort by requestId descending (recent first)
+      data.sort((a, b) => b.requestId - a.requestId);
+
+      setHelpRequests(data);
+      console.log("✓ Help requests loaded:", data);
+    } catch (err) {
+      console.error("❌ Error fetching help requests:", err);
+      setError(err.message || "Failed to load help requests");
+    } finally {
+      setLoading(false);
     }
-
-    let data = await response.json();
-    data = Array.isArray(data) ? data : [data];
-
-    // 🔹 Sort by requestId descending (recent first)
-    data.sort((a, b) => b.requestId - a.requestId);
-
-    setHelpRequests(data);
-    console.log("✓ Help requests loaded:", data);
-  } catch (err) {
-    console.error("❌ Error fetching help requests:", err);
-    setError(err.message || "Failed to load help requests");
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   // Status colors and icons
   const getStatusColor = (status) => {
@@ -133,11 +132,8 @@ const response = await fetch(`${API_BASE_URL}/help/my`, {
       const token = await getToken({ template: "backend" });
 
       await fetch(
-        `http://localhost:8080/api/help/${helpId}/status?status=USER_CONFIRMED`,
-        {
-          method: "PUT",
-          headers: { Authorization: `Bearer ${token}` },
-        },
+        `${API_BASE_URL}/help/${helpId}/status?status=USER_CONFIRMED`,
+        { method: "PUT", headers: { Authorization: `Bearer ${token}` } },
       );
 
       fetchHelpRequests(); // 🔥 real-time
@@ -178,7 +174,8 @@ const response = await fetch(`${API_BASE_URL}/help/my`, {
               {/* LEFT: Help ID */}
               <div className="flex items-center gap-1.5">
                 <div className="px-1.5 py-0.5 bg-blue-500/20 border border-blue-500/50 rounded-full text-xs font-semibold text-blue-300">
-                  Help Request ID: {currentRequest.requestId || currentIndex + 1}
+                  Help Request ID:{" "}
+                  {currentRequest.requestId || currentIndex + 1}
                 </div>
               </div>
 

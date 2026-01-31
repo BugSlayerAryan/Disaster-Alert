@@ -34,12 +34,22 @@ import { MapPin } from "lucide-react";
 export default function IncidentOverview() {
   const [incidents, setIncidents] = useState([]);
 
-  useEffect(() => {
-    fetch(`${API_BASE_URL}/disasters/active`)
-      .then((res) => res.json())
-      .then(setIncidents)
-      .catch((err) => console.error("Failed to fetch incidents:", err));
-  }, []);
+fetch(`${API_BASE_URL}/disasters/active`, {
+  method: "GET", // Explicitly state GET
+  headers: {
+    "Content-Type": "application/json",
+  },
+})
+  .then(async (res) => {
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Server error: ${res.status} - ${text}`);
+    }
+    return res.json();
+  })
+  .then(setIncidents)
+  .catch((err) => console.error("Failed to fetch incidents:", err));
+
 
   // 🎯 Severity styles (HIGH slightly stronger)
   const severityStyle = {

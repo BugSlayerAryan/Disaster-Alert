@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import React, { useState } from "react";
 import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import { useAuth, useUser } from "@clerk/clerk-react";
@@ -32,7 +33,7 @@ const UploadDisaster = () => {
     setLoading(true);
     try {
       const token = await getToken({ template: "backend" });
-      const response = await fetch("/api/disasters", {
+      const response = await fetch(`${API_BASE_URL}/disasters`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,10 +57,9 @@ const UploadDisaster = () => {
       });
     } catch (err) {
       console.error(err);
-      const message =
-        err.message.includes("401")
-          ? "Unauthorized. Admin access required."
-          : err.message.includes("403")
+      const message = err.message.includes("401")
+        ? "Unauthorized. Admin access required."
+        : err.message.includes("403")
           ? "Forbidden. Admin access required."
           : `Error: ${err.message}`;
       notifyError(message);
@@ -74,17 +74,25 @@ const UploadDisaster = () => {
         <ToastContainer position="top-right" theme="colored" />
         <div className="w-full max-w-2xl bg-gray-800 border border-gray-700 rounded-2xl shadow-xl p-8 md:p-12 flex flex-col gap-6">
           <h2 className="text-2xl md:text-3xl font-extrabold text-white flex items-center gap-3">
-            <AlertTriangle size={28} className="text-yellow-400 animate-pulse" />
+            <AlertTriangle
+              size={28}
+              className="text-yellow-400 animate-pulse"
+            />
             Upload Disaster
           </h2>
           <p className="text-gray-400 text-sm">
             Fill in the details to report a disaster accurately.
           </p>
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
             {/* Disaster Type */}
             <div className="flex flex-col">
-              <label className="text-gray-300 mb-1 font-medium">Disaster Type</label>
+              <label className="text-gray-300 mb-1 font-medium">
+                Disaster Type
+              </label>
               <input
                 type="text"
                 name="type"
