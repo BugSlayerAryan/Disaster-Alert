@@ -63,12 +63,28 @@ fetch(`${API_BASE_URL}/api/disasters/active`, {
       "bg-emerald-950 text-emerald-300 border border-emerald-800 text-[11px] px-2.5 py-1",
   };
 
-  const icon = {
-    Cyclone: "🌀",
-    Wildfire: "🔥",
-    Flood: "💧",
-    Tornado: "🌪️",
-  };
+const icon = {
+  Cyclone: "🌀",
+  Wildfire: "🔥",
+  Flood: "💧",
+  Tornado: "🌪️",
+  Earthquake: "🌍",
+  Tsunami: "🌊",
+  Landslide: "🏔️",
+  Volcano: "🌋",
+  Drought: "☀️",
+  Hailstorm: "🌨️",
+  Snowstorm: "❄️",
+  Lightning: "⚡",
+  Avalanche: "🏔️❄️",
+  Heatwave: "🔥☀️",
+  Pandemic: "🦠",
+  DustStorm: "🌪️🌫️",
+  ExtremeCold: "🥶",
+  Hurricane: "🌀🌪️",
+  Storm: "🌩️",
+};
+
 
   const styles = {
     overflowY: 'scroll', // Enable vertical scrolling
