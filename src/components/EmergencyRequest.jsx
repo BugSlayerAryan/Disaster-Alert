@@ -435,7 +435,7 @@ export default function SendHelpRequestPanel() {
       try {
         console.log(
           "Fetching disasters from:",
-          API_BASE_URL + "/disasters/active",
+          API_BASE_URL + "api/disasters/active",
         );
         const res = await fetch(`${API_BASE_URL}/api/disasters/active`, {
           method: "GET",
